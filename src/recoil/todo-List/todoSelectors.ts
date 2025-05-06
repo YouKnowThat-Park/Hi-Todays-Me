@@ -1,5 +1,6 @@
 import { selector } from "recoil";
 import { dayFilterState, filterState, todoListState } from "./todoAtom";
+import { todoSearchState } from "./todoSearchAtom";
 
 export const filteredTodoSelector = selector({
   key: "filteredTodoSelector",
@@ -7,6 +8,7 @@ export const filteredTodoSelector = selector({
     const filter = get(filterState);
     const todos = get(todoListState);
     const day = get(dayFilterState);
+    const search = get(todoSearchState).toLowerCase();
 
     let filtered = todos;
 
@@ -20,6 +22,12 @@ export const filteredTodoSelector = selector({
     // 요일 필터 (selectedDay가 비어있지 않은 경우만 적용)
     if (day) {
       filtered = filtered.filter((todo) => todo.day === day);
+    }
+
+    if (search) {
+      filtered = filtered.filter((todo) =>
+        todo.text.toLowerCase().includes(search)
+      );
     }
 
     return filtered;
