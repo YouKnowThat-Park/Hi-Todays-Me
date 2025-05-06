@@ -5,6 +5,7 @@ export interface Todo {
   text: string;
   completed: boolean;
   completedAt?: string;
+  day?: string;
 }
 
 export const isHydratedState = atom({
@@ -43,4 +44,9 @@ export const todoListState = atom<Todo[]>({
 export const filterState = atom<"all" | "active" | "completed">({
   key: "filterState",
   default: "all",
+});
+
+export const dayFilterState = atom<string>({
+  key: "dayFilterState",
+  default: "",
 });

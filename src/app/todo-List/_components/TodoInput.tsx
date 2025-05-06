@@ -1,12 +1,13 @@
 "use client";
 
-import { todoListState } from "@/recoil/todo-List/todoAtom";
+import { dayFilterState, todoListState } from "@/recoil/todo-List/todoAtom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 
 export default function TodoInput() {
   const [todos, setTodos] = useRecoilState(todoListState);
   const [input, setInput] = useState("");
+  const [day] = useRecoilState(dayFilterState);
 
   const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ export default function TodoInput() {
       id: Date.now(),
       text: input.trim(),
       completed: false,
+      day: day || "",
     };
 
     const updated = [...todos, newTodo];
@@ -28,12 +30,12 @@ export default function TodoInput() {
 
   return (
     <div>
-      <form onSubmit={addTodo} className="flex">
+      <form onSubmit={addTodo} className="flex mr-5">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="할 일을 입력해주세요."
-          className="ml-[50px] border w-[350px] justify-center items-center"
+          className="ml-[50px] border w-[350px] justify-center items-center text-center"
         />
         <button
           type="submit"
