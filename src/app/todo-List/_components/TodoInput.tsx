@@ -1,6 +1,6 @@
 "use client";
 
-import { todoListState } from "@/recoil/atom";
+import { todoListState } from "@/recoil/todo-List/todoAtom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 

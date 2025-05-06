@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { filterState, todoListState } from "./atom";
+import { filterState, todoListState } from "./todoAtom";
 
 export const filteredTodoSelector = selector({
   key: "filteredTodoSelector",

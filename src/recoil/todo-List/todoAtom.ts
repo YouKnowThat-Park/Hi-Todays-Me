@@ -1,10 +1,10 @@
 import { atom } from "recoil";
 
-export type Todo = {
+export interface Todo {
   id: number;
   text: string;
   completed: boolean;
-};
+}
 
 export const isHydratedState = atom({
   key: "isHydratedState",
