@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Recoil 기반 To-Do List 프로젝트
 
-## Getting Started
+이 프로젝트는 **Recoil을 중심으로 상태 관리 학습**을 위한 연습용 프로젝트입니다.  
+기능별로 단계를 나누어 점진적으로 구현하며, Recoil의 다양한 기능을 체험하는 것을 목표로 합니다.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 구현된 기능
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **기본 To-Do 기능**
+   - 할 일 추가 / 삭제 / 완료 처리
+   - Recoil로 상태 관리
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **로컬 스토리지 연동**
+   - `localStorage`를 이용해 상태 유지
+   - 페이지 새로고침에도 데이터 보존
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌑 예정 기능 (학습 계획)
 
-To learn more about Next.js, take a look at the following resources:
+3. **다크 모드**
+   - Tailwind CSS 다크모드 적용
+   - 전역 테마 상태를 Recoil로 관리
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **모달 전역 관리**
+   - Recoil로 열림/닫힘 상태 관리
+   - 여러 컴포넌트 간 공유
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **검색 기능 구현**
+   - 검색어 입력값을 atom에 저장
+   - selectorFamily로 로컬 JSON 데이터에서 조건 검색
+   - 입력값에 따라 실시간 검색 결과 필터링
+   - 자동완성 또는 결과 리스트로 렌더링
+     
+---
 
-## Deploy on Vercel
+## 🧠 목표
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Recoil의 핵심 개념 (atom, selector, selectorFamily, useRecoilCallback) 완전 숙지
+- 상태 관리 라이브러리의 구조적 이해
+- 추후 Zustand, Redux 등과의 비교 학습을 위한 기초 마련
