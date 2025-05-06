@@ -32,12 +32,14 @@ export default function EditTodoModal() {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white p-4 rounded shadow w-[300px]">
+      <div className="bg-white p-4 rounded shadow w-[400px] h-[500px]">
         <h2 className="text-lg mb-2 font-semibold">할 일 수정</h2>
-        <input
+        <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="w-full border px-2 py-1 rounded mb-2"
+          rows={5}
+          className="w-full border px-3 py-2 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="내용을 수정하세요"
         />
         <div className="flex justify-end gap-2">
           <button
