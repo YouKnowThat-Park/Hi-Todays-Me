@@ -13,11 +13,6 @@ export const isHydratedState = atom({
   default: false,
 });
 
-export const userState = atom({
-  key: "userState",
-  default: null as null | { id: number; name: string },
-});
-
 export const todoListState = atom<Todo[]>({
   key: "todoListState",
   default: [],
