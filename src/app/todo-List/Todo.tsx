@@ -4,6 +4,7 @@ import TodoInput from "./_components/TodoInput";
 import TodoList from "./_components/TodoList";
 import { dayFilterState } from "@/recoil/todo-List/todoAtom";
 import { useEffect } from "react";
+import ExpandingSearchInput from "./_components/ExpandingSearchInput";
 
 export default function TodoListPage() {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -22,7 +23,7 @@ export default function TodoListPage() {
         <h2 className="text-2xl font-bold text-center mb-4 text-gray-800 dark:text-white">
           To Do List
         </h2>
-        <div className="flex gap-2 flex-wrap mb-2">
+        <div className="flex gap-2 flex-wrap mb-4">
           {days.map((day) => (
             <button
               key={day}
@@ -37,6 +38,7 @@ export default function TodoListPage() {
             </button>
           ))}
         </div>
+
         <TodoInput />
         <div className="flex-1 overflow-y-auto">
           <TodoList />
