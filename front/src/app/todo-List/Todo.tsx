@@ -4,7 +4,7 @@ import TodoInput from "./_components/TodoInput";
 import TodoList from "./_components/TodoList";
 import { dayFilterState } from "@/recoil/todo-List/todoAtom";
 import { useEffect } from "react";
-import ExpandingSearchInput from "./_components/ExpandingSearchInput";
+import SidebarHeader from "./_components/SidebarHeader";
 
 export default function TodoListPage() {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -18,8 +18,9 @@ export default function TodoListPage() {
   }, [selectedDay, setSelectedDay]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 ">
-      <div className="w-[500px] h-[600px] p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-md flex flex-col">
+    <div className="min-h-screen flex items-center justify-center  ">
+      <SidebarHeader />
+      <div className="w-[500px] h-[600px] ml-[200px] p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-md flex flex-col">
         <h2 className="text-2xl font-bold text-center mb-4 text-gray-800 dark:text-white">
           Dear Someday
         </h2>

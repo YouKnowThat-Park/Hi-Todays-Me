@@ -70,7 +70,9 @@ export default function TodoList() {
                   textOverflow: "ellipsis",
                 }}
               >
-                {todo.text}
+                <span onClick={} className="hover">
+                  {todo.text}
+                </span>
               </span>
             </div>
 
