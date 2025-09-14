@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import TodoListPage from "./todo-List/Todo";
+import HomePage from "./home/page";
 
 const Page = () => {
   return (
     <div>
-      <TodoListPage />
+      <HomePage />
     </div>
   );
 };

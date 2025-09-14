@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { todoListState, dayFilterState } from "@/recoil/todo-List/todoAtom";
+import { todoListState, dayFilterState } from "@/state/todo-List/todoAtom";
 import ExpandingSearchInput from "./ExpandingSearchInput";
 
 export default function TodoInput() {

@@ -1,10 +1,10 @@
 "use client";
 
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
-import { Todo, todoListState } from "@/recoil/todo-List/todoAtom";
+import { Todo, todoListState } from "@/state/todo-List/todoAtom";
 import { useEffect, useState } from "react";
-import { filteredTodoSelector } from "@/recoil/todo-List/todoSelectors";
-import { editTodoModalState } from "@/recoil/todo-List/editTodomodalAtom";
+import { filteredTodoSelector } from "@/state/todo-List/todoSelectors";
+import { editTodoModalState } from "@/state/todo-List/editTodomodalAtom";
 
 export default function TodoList() {
   const filteredTodos = useRecoilValue(filteredTodoSelector);

@@ -1,12 +1,13 @@
+"use client";
 import { useRecoilState } from "recoil";
 import EditTodoModal from "./_components/EditTodoModal";
 import TodoInput from "./_components/TodoInput";
 import TodoList from "./_components/TodoList";
-import { dayFilterState } from "@/recoil/todo-List/todoAtom";
-import { useEffect } from "react";
+import { dayFilterState } from "@/state/todo-List/todoAtom";
 import SidebarHeader from "./_components/SidebarHeader";
+import { useEffect } from "react";
 
-export default function TodoListPage() {
+export default function HomePage() {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const [selectedDay, setSelectedDay] = useRecoilState(dayFilterState);
 
