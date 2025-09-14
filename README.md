@@ -1,56 +1,44 @@
-# 📝 Recoil 기반 To-Do List 프로젝트
+# 🙌🏻 Hi, Today’s Me
 
-이 프로젝트는 **Recoil을 중심으로 상태 관리 학습**을 위한 연습용 프로젝트입니다.  
-기능별로 단계를 나누어 점진적으로 구현하며, Recoil의 다양한 기능을 체험하는 것을 목표로 합니다.
+**Hi, Today’s Me** 는 투두리스트와 일기장 기능을 제공하는 자기 관리 플랫폼입니다.  
+하루의 할 일을 정리하고, 동시에 나의 생각과 감정을 기록할 수 있도록 설계되었습니다.  
 
----
+이 프로젝트는 단순한 기능 구현을 넘어,  
+Next.js (프론트엔드) + FastAPI (백엔드) 를 활용한 풀스택 개발과 모바일(Expo) 그리고
+AWS 배포, CI/CD 파이프라인 구축, 테스트 자동화까지 경험하는 것을 목표로 합니다.  
 
-## 🚀 구현된 기능
+프로젝트 시작
+2025 - 09 - 15 ~
 
-1. **기본 To-Do 기능**
-   - 할 일 추가 / 삭제 / 완료 처리
-   - Recoil로 상태 관리
+## Tech Stack
+### 🖥️ Frontend
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Recoil](https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white)
+![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white)
 
-2. **로컬 스토리지 연동**
-   - `localStorage`를 이용해 상태 유지
-   - 페이지 새로고침에도 데이터 보존
+### 📱 Mobile
+![React Native](https://img.shields.io/badge/React_Native-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 
-3. **모달 전역 관리**
-   - Recoil로 열림/닫힘 상태 관리
-   - 여러 컴포넌트 간 공유
+### ⚙️ Backend
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![OAuth](https://img.shields.io/badge/OAuth-3C3C3D?style=for-the-badge&logo=openid&logoColor=white)
 
-4. **요일 전역 필터링**
-   - Recoil로 요일 상태 관리
-   - 버튼 클릭으로 요일 선택 필터 적용
+### ☁️ DevOps / Infra
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
 
-5. **검색 기능 구현**
-   - 검색어를 atom으로 상태 관리
-   - selector에서 실시간 필터링 처리
-   - 입력과 동시에 필터링되며, day 필터는 무시됨
+### 🧪 Testing
+![RTL](https://img.shields.io/badge/Testing_Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
----
+### 🔐 Authentication
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![OAuth](https://img.shields.io/badge/OAuth-3C3C3D?style=for-the-badge&logo=openid&logoColor=white)
 
-## 🖼️ 주요 화면
 
-### 1. 메인 화면
-![Main UI](https://github.com/user-attachments/assets/18bb4e6d-7867-476d-a0cf-9773d7a8e6d1)
-
-### 2. 검색창
-![Search Box](https://github.com/user-attachments/assets/d8ab7843-159e-43f8-b2ab-cefce5926633)
-
-### 3. 수정 모달
-![Edit Modal](https://github.com/user-attachments/assets/7763354b-829b-49f7-aed6-f7f7b81e27be)
-
----
-
-## 🧠 목표
-
-- Recoil의 핵심 개념 (atom, selector, selectorFamily 등) 이해
-- 전역 상태 관리 구조의 기초 다지기
-- Zustand, Redux 등과의 비교 학습 기반 마련
-
----
-
-## ⛳ 느낀 점
-
-> Zustand 그립다...
