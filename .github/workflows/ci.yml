@@ -32,6 +32,7 @@ jobs:
           # → Node.js 20 버젼 사용
           cache: "pnpm"
           # → pnpm 관련 캐시 최적화
+          cache-dependency-path: web/pnpm-lock.yaml
 
       - name: Install pnpm
         run: npm install -g pnpm
