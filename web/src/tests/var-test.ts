@@ -1,5 +1,5 @@
-export default function varvar() {
-  var wooseok = "good";
+// export default function varvar() {
+//   var wooseok = "good";
 
-  return wooseok;
-}
+//   return wooseok;
+// }
