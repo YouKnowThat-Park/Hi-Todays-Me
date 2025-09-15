@@ -7,14 +7,15 @@ import { dayFilterState } from "@/state/todo-List/todoAtom";
 import SidebarHeader from "./_components/SidebarHeader";
 import { useEffect } from "react";
 
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
 export default function HomePage() {
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const [selectedDay, setSelectedDay] = useRecoilState(dayFilterState);
 
   useEffect(() => {
     if (!selectedDay) {
       const today = new Date().getDay(); // 0 ~ 6
-      setSelectedDay(days[today]);
+      setSelectedDay(DAYS[today]);
     }
   }, [selectedDay, setSelectedDay]);
 
@@ -26,7 +27,7 @@ export default function HomePage() {
           Dear Someday
         </h2>
         <div className="flex gap-2 flex-wrap mb-4">
-          {days.map((day) => (
+          {DAYS.map((day) => (
             <button
               key={day}
               onClick={() => setSelectedDay(day)} // ✅ 여기 추가
