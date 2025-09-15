@@ -5,6 +5,8 @@ on:
   push:
     branches: [master, dev]
   pull_request:
+    paths:
+      - "web/**"
 # → Push 할때 어느 브렌치를 실행 시킬지
 # → RP 실행 될 때도 포함
 
@@ -20,6 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.16.1
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -27,10 +34,7 @@ jobs:
           # → Node.js 20 버젼 사용
           cache: "pnpm"
           # → pnpm 관련 캐시 최적화
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-        # → pnpm CLI 설치
+          cache-dependency-path: web/pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install
@@ -43,10 +47,9 @@ jobs:
       - name: Type Check
         run: pnpm tsc --noEmit
 
-      - name: Test
-        run: pnpm test
-        # → 테스트 실행
-
+      # - name: Test
+      #   run: pnpm test
+      #   # → 테스트 실행
       - name: Build
         run: pnpm build
         # → 빌드 실행

@@ -1,3 +1,3 @@
-export default function wooseok(a: any, c: any) {
-  return a + c;
-}
+// export default function wooseok(a: any, c: any) {
+//   return a + c;
+// }
