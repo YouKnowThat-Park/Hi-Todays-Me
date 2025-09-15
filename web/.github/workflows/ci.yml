@@ -1,0 +1,52 @@
+name: CI = Web App
+# → 워크플로우 이름
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+# → Push 할때 어느 브렌치를 실행 시킬지
+# → RP 실행 될 때도 포함
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: web
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # → Node.js 20 버젼 사용
+          cache: "pnpm"
+          # → pnpm 관련 캐시 최적화
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+        # → pnpm CLI 설치
+
+      - name: Install dependencies
+        run: pnpm install
+        # → pnpm 의존성 설치 (node-modules 생성)
+
+      - name: Lint
+        run: pnpm lint
+        # → 코드 스타일 검사
+
+      - name: Type Check
+        run: pnpm tsc --noEmit
+
+      - name: Test
+        run: pnpm test
+        # → 테스트 실행
+
+      - name: Build
+        run: pnpm build
+        # → 빌드 실행

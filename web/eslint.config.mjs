@@ -11,6 +11,21 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      "no-var": "error",
+      // → var 사용 불가능
+
+      "prefer-const": "error",
+      // → const 권장, let은 특수한 경우 사용가능
+
+      "@typescript-eslint/no-explicit-any": "error",
+      //
+
+      eqeqeq: ["error", "always"],
+      // → == 대신 === 사용
+    },
+  },
 ];
 
 export default eslintConfig;
