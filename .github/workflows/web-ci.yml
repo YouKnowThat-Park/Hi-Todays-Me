@@ -5,6 +5,8 @@ on:
   push:
     branches: [master, dev]
   pull_request:
+    paths:
+      - "web/**"
 # → Push 할때 어느 브렌치를 실행 시킬지
 # → RP 실행 될 때도 포함
 
@@ -33,10 +35,6 @@ jobs:
           cache: "pnpm"
           # → pnpm 관련 캐시 최적화
           cache-dependency-path: web/pnpm-lock.yaml
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-        # → pnpm CLI 설치
 
       - name: Install dependencies
         run: pnpm install
