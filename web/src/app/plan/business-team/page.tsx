@@ -1,16 +1,14 @@
 import React from "react";
 import ViewMembershipForm from "../_components/ViewMembershipForm";
+import PlanMembershipCard from "@/components/plan/PlanMembershipCard";
+import BusinessMembershipCardForm from "./_components/BusinessMembershipCardForm";
 
 export default function page() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  flex flex-col justify-center items-center mb-20">
-      <div className="flex w-full mt-28 gap-8 justify-center items-center">
-        <span className="w-[400px] h-[500px] bg-amber-50 rounded-3xl text-center">
-          프리미엄 멤버십 5,900원
-        </span>
-        <span className="w-[500px] h-[500px] bg-amber-200">
-          여긴 사진? 영상?
-        </span>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center mb-20">
+      <div className="flex w-full mt-28 gap-8 justify-center">
+        <BusinessMembershipCardForm />
+        <div className="w-[500px] h-[500px] bg-amber-200">여긴 사진? 영상?</div>
       </div>
 
       <div className="flex flex-col w-full  gap-8 p-[112px] justify-center items-center">
