@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import RecoilProvider from "@/providers/RecoilProvider";
-import Header from "./header";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -18,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="ko" className={inter.variable}>
       <body className="font-sans">
-        <Header />
         <RecoilProvider>{children}</RecoilProvider>
       </body>
     </html>
