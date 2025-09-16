@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-export default function HomePage() {
+export default function Todo() {
   const [selectedDay, setSelectedDay] = useRecoilState(dayFilterState);
 
   useEffect(() => {
