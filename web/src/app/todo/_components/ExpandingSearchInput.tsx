@@ -39,41 +39,34 @@ export default function ExpandingSearchInput({ onToggle }: Props) {
   return (
     <div
       ref={wrapperRef}
-      className={`h-12 transition-all duration-300 flex items-center px-0 ${
-        isOpen ? "w-full" : "w-12"
+      className={`h-10 flex items-center rounded-full shadow transition-all duration-200 overflow-hidden bg-blue-500 text-white ${
+        isOpen ? "w-[220px] pl-3 pr-2" : "w-10 justify-center"
       }`}
     >
-      <div
-        className={`flex items-center rounded-full transition-all duration-300 overflow-hidden ${
-          isOpen ? "w-full border px-3" : "w-12 h-12 justify-center"
-        }`}
+      <button
+        onClick={handleToggle}
+        className="w-10 h-10 flex items-center justify-center hover:text-gray-200 transition"
       >
-        <button
-          onClick={handleToggle}
-          className="flex items-center justify-center w-12 h-12 rounded-full transition hover:text-blue-500"
+        {/* 돋보기 아이콘 */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="18"
-            height="18"
-          >
-            <path
-              fill="currentColor"
-              d="M18.9,16.776A10.539,10.539,0,1,0,16.776,18.9l5.1,5.1L24,21.88ZM10.5,18A7.5,7.5,0,1,1,18,10.5,7.507,7.507,0,0,1,10.5,18Z"
-            />
-          </svg>
-        </button>
+          <path d="M18.9,16.776A10.539,10.539,0,1,0,16.776,18.9l5.1,5.1L24,21.88ZM10.5,18A7.5,7.5,0,1,1,18,10.5,7.507,7.507,0,0,1,10.5,18Z" />
+        </svg>
+      </button>
 
-        {isOpen && (
-          <input
-            type="text"
-            placeholder="Search..."
-            onChange={(e) => setSearch(e.target.value)}
-            className="ml-3 outline-none text-sm bg-transparent w-full text-gray-800 placeholder:text-gray-400"
-          />
-        )}
-      </div>
+      {isOpen && (
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => setSearch(e.target.value)}
+          className="ml-2 bg-transparent outline-none w-full text-sm placeholder:text-white text-white"
+        />
+      )}
     </div>
   );
 }
