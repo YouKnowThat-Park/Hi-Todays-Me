@@ -1,17 +1,16 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { calendarModal } from "@/state/modal/ModalAtom";
 import React from "react";
 import { FiCalendar } from "react-icons/fi";
+import { useRecoilState } from "recoil";
 
 export default function CalendarIcon() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const [, setModal] = useRecoilState(calendarModal);
 
   const openCalendar = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("modal", "calendar");
-    router.push(`?${params.toString()}`);
+    setModal({ isOpen: true, selectedDate: null });
   };
+
   return (
     <button
       onClick={openCalendar}

@@ -1,19 +1,16 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+
+import ScrollTodoUI from "@/components/todo/ScrollTodoUI";
+import { calendarModal } from "@/state/modal/ModalAtom";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
 
 export default function CalendarModal() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const isOpen = searchParams.get("modal") === "calendar";
-
-  if (!isOpen) return null;
+  const [modal, setModal] = useRecoilState(calendarModal);
 
   const handleClose = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("modal");
-    router.push(`?${params.toString()}`);
+    setModal({ isOpen: false, selectedDate: null });
+    window.history.back(); // 뒤로가기 처리
   };
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -21,20 +18,38 @@ export default function CalendarModal() {
       handleClose();
     }
   };
+
+  // 뒤로가기 핸들링
+  useEffect(() => {
+    const handlePopState = () => {
+      setModal({ isOpen: false, selectedDate: null });
+    };
+
+    if (modal.isOpen) {
+      window.history.pushState({ modal: true }, "");
+      window.addEventListener("popstate", handlePopState);
+    }
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [modal.isOpen, setModal]);
+
+  if (!modal.isOpen) return null;
+
   return (
-    <div
-      onClick={handleOverlayClick}
-      className="fixed inset-0 flex items-center justify-center bg-black/50"
-    >
-      <div className="bg-white w-[800px] h-[500px]">
-        <div></div>
+    <ScrollTodoUI isOpen={modal.isOpen} onClose={handleClose}>
+      <div
+        onClick={handleOverlayClick}
+        className="w-full h-full flex flex-col p-6"
+      >
         <button
           onClick={handleClose}
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded self-end"
         >
           닫기
         </button>
       </div>
-    </div>
+    </ScrollTodoUI>
   );
 }
