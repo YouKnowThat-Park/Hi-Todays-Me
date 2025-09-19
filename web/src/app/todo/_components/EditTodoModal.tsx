@@ -1,4 +1,4 @@
-import { editTodoModalState } from "@/state/todo-List/editTodomodalAtom";
+import { editTodoModalState } from "@/state/modal/ModalAtom";
 import { todoListState } from "@/state/todo-List/todoAtom";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";

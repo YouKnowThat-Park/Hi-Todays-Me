@@ -4,7 +4,7 @@ import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import { Todo, todoListState } from "@/state/todo-List/todoAtom";
 import { useEffect, useState } from "react";
 import { filteredTodoSelector } from "@/state/todo-List/todoSelectors";
-import { editTodoModalState } from "@/state/todo-List/editTodomodalAtom";
+import { editTodoModalState } from "@/state/modal/ModalAtom";
 
 export default function TodoList() {
   const filteredTodos = useRecoilValue(filteredTodoSelector);
