@@ -15,9 +15,19 @@ export default function CalendarModal() {
     params.delete("modal");
     router.push(`?${params.toString()}`);
   };
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-      <div className="bg-white w-[500px]">
+    <div
+      onClick={handleOverlayClick}
+      className="fixed inset-0 flex items-center justify-center bg-black/50"
+    >
+      <div className="bg-white w-[800px] h-[500px]">
+        <div></div>
         <button
           onClick={handleClose}
           className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
@@ -25,7 +35,6 @@ export default function CalendarModal() {
           닫기
         </button>
       </div>
-      CalendarModal
     </div>
   );
 }
