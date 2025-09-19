@@ -5,7 +5,7 @@ export default function NotificationBell() {
   return (
     <button
       className="
-        fixed right-10 bottom-5 
+        fixed right-10 bottom-15 
         w-14 h-14 
         flex items-center justify-center
         rounded-full 

@@ -5,7 +5,7 @@ export default function CalendarIcon() {
   return (
     <button
       className="
-            fixed right-26 bottom-5
+            fixed right-26 bottom-15
             w-14 h-14 
             flex items-center justify-center
             rounded-full 
