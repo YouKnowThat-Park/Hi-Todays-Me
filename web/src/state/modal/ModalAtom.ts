@@ -13,3 +13,8 @@ export const calendarModal = atom<{
   key: "calendarModalState",
   default: { isOpen: false, selectedDate: null },
 });
+
+export const scrollTodoModal = atom<{ isOpen: boolean }>({
+  key: "scrollTodoModalState",
+  default: { isOpen: false },
+});
