@@ -2,6 +2,10 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import RecoilProvider from "@/providers/RecoilProvider";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import NotificationBell from "@/components/layout/notifications/NotificationBell";
+import CalendarIcon from "@/components/layout/calendar/CalendarIcon";
+import CalendarModal from "@/components/layout/calendar/CalendarModal";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -18,7 +22,12 @@ export default function RootLayout({
   return (
     <html lang="ko" className={inter.variable}>
       <body className="font-sans">
-        <RecoilProvider>{children}</RecoilProvider>
+        <RecoilProvider>
+          {children}
+          <CalendarIcon />
+          <NotificationBell />
+          <CalendarModal />
+        </RecoilProvider>
         <Footer />
       </body>
     </html>

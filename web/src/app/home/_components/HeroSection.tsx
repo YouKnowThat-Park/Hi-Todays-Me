@@ -5,9 +5,12 @@ export default function HeroSection() {
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="w-full h-[500px] flex flex-wrap gap-y-5 lg:gap-y-0">
-        <div className="w-full lg:w-1/3 bg-green-500 hover:scale-102 transform transition-transform duration-300">
-          이용하기 및 로그인 이동, 사진
-        </div>
+        <Link
+          href={"/todo"}
+          className="w-full lg:w-1/3 bg-green-500 hover:scale-102 transform transition-transform duration-300"
+        >
+          <div>이용하기 및 로그인 이동, 사진</div>
+        </Link>
         <Link
           href={"/plan/premium"}
           className="w-full  lg:w-1/3 bg-amber-300 hover:scale-102 transform transition-transform duration-300"

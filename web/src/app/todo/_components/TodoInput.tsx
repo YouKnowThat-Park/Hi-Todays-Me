@@ -3,13 +3,15 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState, dayFilterState } from "@/state/todo-List/todoAtom";
-import ExpandingSearchInput from "./ExpandingSearchInput";
+import ScrollTodoUI from "@/components/todo/ScrollTodoUI";
+import { scrollTodoModal } from "@/state/modal/ModalAtom";
+import { useCloseModal } from "@/hooks/useCloseModal";
 
 export default function TodoInput() {
   const [todos, setTodos] = useRecoilState(todoListState);
   const [day] = useRecoilState(dayFilterState);
+  const [modal, setModal] = useRecoilState(scrollTodoModal);
   const [input, setInput] = useState("");
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // 🔄 검색창 열림 여부
 
   const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,21 +28,31 @@ export default function TodoInput() {
     setTodos(updated);
     localStorage.setItem("todos", JSON.stringify(updated));
     setInput("");
+    setModal({ isOpen: false }); // 저장 후 닫기
   };
+
+  const handleClose = () => {
+    setModal({ isOpen: false });
+  };
+
+  const closeModal = useCloseModal({
+    isOpen: modal.isOpen,
+    onClose: handleClose,
+  });
 
   return (
     <div>
-      <form
-        onSubmit={addTodo}
-        className="flex justify-center items-center gap-3 "
-      >
-        {!isSearchOpen && (
-          <>
+      {modal.isOpen && (
+        <ScrollTodoUI isOpen={modal.isOpen} onClose={closeModal}>
+          <form
+            onSubmit={addTodo}
+            className="flex justify-end items-center gap-3 w-full"
+          >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="할 일을 입력해주세요."
-              className="border w-[250px] h-12 text-center"
+              className="border flex-1 h-12 px-3 rounded"
             />
             <button
               type="submit"
@@ -48,10 +60,9 @@ export default function TodoInput() {
             >
               추가
             </button>
-          </>
-        )}
-        <ExpandingSearchInput onToggle={setIsSearchOpen} />
-      </form>
+          </form>
+        </ScrollTodoUI>
+      )}
     </div>
   );
 }
