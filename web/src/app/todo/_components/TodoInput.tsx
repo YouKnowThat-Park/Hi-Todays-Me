@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState, dayFilterState } from "@/state/todo-List/todoAtom";
 import ScrollTodoUI from "@/components/todo/ScrollTodoUI";
 import { scrollTodoModal } from "@/state/modal/ModalAtom";
+import { useCloseModal } from "@/hooks/useCloseModal";
 
 export default function TodoInput() {
   const [todos, setTodos] = useRecoilState(todoListState);
@@ -30,32 +31,19 @@ export default function TodoInput() {
     setModal({ isOpen: false }); // 저장 후 닫기
   };
 
-  // 뒤로가기 핸들링
-  useEffect(() => {
-    const handlePopState = () => {
-      setModal({ isOpen: false });
-    };
+  const handleClose = () => {
+    setModal({ isOpen: false });
+  };
 
-    if (modal.isOpen) {
-      window.history.pushState({ modal: true }, ""); // 모달 열릴 때 히스토리 추가
-      window.addEventListener("popstate", handlePopState);
-    }
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [modal.isOpen, setModal]);
+  const closeModal = useCloseModal({
+    isOpen: modal.isOpen,
+    onClose: handleClose,
+  });
 
   return (
     <div>
       {modal.isOpen && (
-        <ScrollTodoUI
-          isOpen={modal.isOpen}
-          onClose={() => {
-            setModal({ isOpen: false });
-            window.history.back(); // 닫을 때 히스토리 되돌리기
-          }}
-        >
+        <ScrollTodoUI isOpen={modal.isOpen} onClose={closeModal}>
           <form
             onSubmit={addTodo}
             className="flex justify-end items-center gap-3 w-full"

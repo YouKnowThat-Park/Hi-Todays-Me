@@ -13,11 +13,15 @@ export default function ScrollTodoUI({
   children,
 }: ScrollTodoUiProps) {
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    if (isOpen) document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
   return (
@@ -28,6 +32,7 @@ export default function ScrollTodoUI({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={onClose}
         >
           <motion.div
             className="w-[800px] h-[560px] bg-white flex flex-col items-center  rounded-t-lg shadow p-2"
@@ -35,6 +40,7 @@ export default function ScrollTodoUI({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="w-12 h-1.5 bg-gray-300 rounded-full mt-2" />
             {children}
